@@ -1,0 +1,14 @@
+---
+  - hosts: all
+    sudo: true
+    tasks:
+      - name: Update package list
+        apt: update_cache=yes
+
+      - name: Install packages
+        apt: name={{ item }} state=latest
+        with_items:
+          - python-pip
+
+      - name: PIP install
+        pip: requirements=/vagrant/app/Requirements.txt
