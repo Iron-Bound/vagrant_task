@@ -1,19 +1,22 @@
-*CryptoCoin Price Lookup*
+<h1>A CryptoCoin Rates Site</h1>
 
-After receiving a large inheritance from an expired relative, you now find yourself flush with Ca$h.
-Now rather than hide it under all the mattresses in your house, you have decided to invest into the
-sounds investment of Crypto Currency.
+<h3>Intro</h3>
+After receiving a large inheritance from an expired relative, you now find yourself flush with the Ca$h!
 
-Now if only there was a place to find out how much there worth!
+Rather than hide it under the mattress, you have decided to invest into crypto based currency.
 
-**Required Setup**
+Now to see how much there worth! <br>
+Open browser @: **localhost:8080**
 
-The following installed software is required, on the host for best results.
+
+<h3>Required Setup</h3>
+
+The following installed software is required by the host system.
 - Vagrant
-- VirtualBox or VM software
+- VirtualBox
 - Ansible
 
-**Tech Used**
+<h4>Tech Used</h4>
 
 - Nginx
 - Python
