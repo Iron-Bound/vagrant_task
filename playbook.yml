@@ -2,7 +2,7 @@
   - hosts: all
     become: true
     tasks:
-      - name: Update package list
+      - name: Update packages list
         apt: update_cache=yes
 
       - name: Install packages
@@ -11,6 +11,43 @@
           - python-pip
           - nginx
           - sqlite
+          - supervisor
 
-      - name: PIP install
-        pip: requirements=/vagrant/app/Requirements.txt
+
+      - name: PIP libary install
+        pip: name=bottle
+
+      - name: App directory
+        file:
+          path: /opt/app
+          state: directory
+          owner: vagrant
+          group: vagrant
+
+      - name: Copy app
+        copy:
+          src: app
+          dest: /opt/
+          owner: vagrant
+          group: vagrant
+
+      - name: Initialize DB - when database missing
+        command: /usr/bin/python ./db_init.py
+        become_user: vagrant
+        args:
+          chdir: /opt/app/
+          creates: /opt/app/data.dbt
+
+      - name: Supervisor copy config
+        copy: src=config/supervisor.conf dest=/etc/supervisor/conf.d/exhange.conf
+
+
+      - name: Nginx copy config
+        copy: src=config/nginx dest=/etc/nginx/sites-available/default
+
+
+      - name: Restart nginx
+        service: name=nginx enabled=yes state=reloaded
+
+      - name: Restart supervisor
+        service: name=supervisor enabled=yes state=restarted

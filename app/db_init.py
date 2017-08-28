@@ -7,3 +7,5 @@ conn.execute("INSERT INTO exchange (name,code,trend,rate) VALUES ('Ethereum','ET
 conn.execute("INSERT INTO exchange (name,code,trend,rate) VALUES ('Litecoin','LTC','UP','$50.56')")
 conn.execute("INSERT INTO exchange (name,code,trend,rate) VALUES ('Dogecoin','DOGE','HOLD','$1337.00')")
 conn.commit()
+
+# Source data http://www.cryptocurrencychart.com/
